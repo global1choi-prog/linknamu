@@ -1,5 +1,5 @@
 // 메인 페이지에 표시할 프로필과 링크 데이터
-// 추후 MongoDB Atlas에서 불러오도록 교체 예정
+// 링크 클릭 수는 MongoDB Atlas(linknamu.clicks)에 저장됨
 
 export type LinkIcon = "github" | "instagram" | "blog" | "youtube";
 

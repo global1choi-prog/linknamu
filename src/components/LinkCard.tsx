@@ -29,10 +29,16 @@ const icons: Record<LinkIcon, React.ReactNode> = {
   ),
 };
 
-export default function LinkCard({ title, url, icon }: LinkItem) {
+type LinkCardProps = LinkItem & {
+  clicks: number;
+  onClick?: () => void;
+};
+
+export default function LinkCard({ title, url, icon, clicks, onClick }: LinkCardProps) {
   return (
     <a
       href={url}
+      onClick={onClick}
       target="_blank"
       rel="noopener noreferrer"
       className="group flex items-center gap-4 rounded-2xl border border-zinc-200/80 bg-white px-5 py-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md active:translate-y-0 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-700"
@@ -52,6 +58,9 @@ export default function LinkCard({ title, url, icon }: LinkItem) {
         </svg>
       </span>
       <span className="flex-1 font-semibold text-zinc-800 dark:text-zinc-100">{title}</span>
+      <span className="shrink-0 text-xs tabular-nums text-zinc-400 dark:text-zinc-500">
+        {clicks.toLocaleString("ko-KR")}회
+      </span>
       <svg
         viewBox="0 0 24 24"
         fill="none"
